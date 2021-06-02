@@ -1,5 +1,33 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require "function.php";
+
+if (isset($_POST["submit"])) {
+    $nama = $_POST["nama"];
+    $file_gambar = $_FILES["gambar"];
+    $harga = $_POST["harga"];
+    $ukuran = implode(", ", $_POST["ukuran"]);
+    $kondisi = $_POST["kondisi"] == "baru";
+    $berat = $_POST["berat"];
+    $kategori = $_POST["kategori"];
+    $jenis = $_POST["jenis"];
+    $keterangan = $_POST["keterangan"];
+    $tags = implode(", ", $_POST["tags"]);
+    $status = $_POST["status"];
+
+    $path = "image/" . $status . "/" . time() . ".jpg";
+
+    $queryInsert = "INSERT INTO barang VALUES(DEFAULT, '$nama', '$path', 
+    '$harga', '$ukuran', '$kondisi', '$berat', '$kategori', '$jenis', 
+    '$keterangan', '$tags');";
+
+    if (mysqli_query($conn, $queryInsert)) {
+        move_uploaded_file($file_gambar["tmp_name"], $path);
+        echo "berhasil";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +43,7 @@ require "function.php";
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="admin.php">
             <img src="backup_item/b.png" width="30" height="30" alt="">
             Admin
         </a>
@@ -25,6 +53,10 @@ require "function.php";
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="form.php">Insert</a>
                 </li>
@@ -47,8 +79,8 @@ require "function.php";
             <div class="form-group">
                 <p>Upload Gambar</p>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="input-gambar">
-                    <label class="custom-file-label" for="input-gambar" name="gambar">Choose file</label>
+                    <input type="file" class="custom-file-input" id="input-gambar" name="gambar">
+                    <label class="custom-file-label" for="input-gambar">Choose file</label>
                 </div>
             </div>
 
@@ -60,35 +92,35 @@ require "function.php";
             <div class="form-group">
                 <p>Pilih Ukuran</p>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-S" value="S">
-                    <label class="custom-control-label" for="ukuran-S" name="ukuran[]">S</label>
+                    <input type="checkbox" class="custom-control-input" id="ukuran-S" name="ukuran[]" value="S">
+                    <label class="custom-control-label" for="ukuran-S">S</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-M" value="M">
-                    <label class="custom-control-label" for="ukuran-M" name="ukuran[]">M</label>
+                    <input type="checkbox" class="custom-control-input" id="ukuran-M" name="ukuran[]" value="M">
+                    <label class="custom-control-label" for="ukuran-M">M</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-L" value="L">
-                    <label class="custom-control-label" for="ukuran-L" name="ukuran[]">L</label>
+                    <input type="checkbox" class="custom-control-input" id="ukuran-L" name="ukuran[]" value="L">
+                    <label class="custom-control-label" for="ukuran-L">L</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-XL" value="XL">
-                    <label class="custom-control-label" for="ukuran-XL" name="ukuran[]">XL</label>
+                    <input type="checkbox" class="custom-control-input" id="ukuran-XL" name="ukuran[]" value="XL">
+                    <label class="custom-control-label" for="ukuran-XL">XL</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-XXL" value="XXL">
-                    <label class="custom-control-label" for="ukuran-XXL" name="ukuran[]">XXL</label>
+                    <input type="checkbox" class="custom-control-input" id="ukuran-XXL" name="ukuran[]" value="XXL">
+                    <label class="custom-control-label" for="ukuran-XXL">XXL</label>
                 </div>
             </div>
 
             <div class="form-group">
                 <p>Kondisi Barang</p>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="input-baru" name="kondisi" class="custom-control-input">
+                    <input type="radio" id="input-baru" name="kondisi" class="custom-control-input" value="baru">
                     <label class="custom-control-label" for="input-baru">Baru</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
@@ -99,7 +131,7 @@ require "function.php";
 
             <div class="form-group">
                 <label for="input-berat">Berat Barang</label>
-                <input class="form-control" type="number" placeholder="Masukan berat barang dalam satuan gram" id="input-berat" name="harga" step="0.01">
+                <input class="form-control" type="number" placeholder="Masukan berat barang dalam satuan gram" id="input-berat" name="berat" step="0.01">
             </div>
 
             <div class="form-group">
@@ -116,10 +148,10 @@ require "function.php";
             <div class="form-group">
                 <label for="input-jenis">Jenis Barang</label>
                 <select class="form-control" id="input-jenis" name="jenis">
-                    <option>jaket</option>
-                    <option>baju</option>
-                    <option>celana pendek</option>
-                    <option>celana panjang</option>
+                    <option value="jaket">jaket</option>
+                    <option value="baju">baju</option>
+                    <option value="celana pendek">celana pendek</option>
+                    <option value="celana panjang">celana panjang</option>
                 </select>
             </div>
 
@@ -129,26 +161,42 @@ require "function.php";
             </div>
 
             <div class="form-group">
+                <p>Tags</p>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="hoodie" value="hoodie">
-                    <label class="custom-control-label" for="hoodie" name="tags[]">hoodie</label>
+                    <input type="checkbox" class="custom-control-input" id="hoodie" name="tags[]" value="hoodie">
+                    <label class="custom-control-label" for="hoodie">hoodie</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="cold" value="cold">
-                    <label class="custom-control-label" for="cold" name="tags[]">cold</label>
+                    <input type="checkbox" class="custom-control-input" id="cold" name="tags[]" value="cold">
+                    <label class="custom-control-label" for="cold">cold</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="summer" value="summer">
-                    <label class="custom-control-label" for="summer" name="tags[]">summer</label>
+                    <input type="checkbox" class="custom-control-input" id="summer" name="tags[]" value="summer">
+                    <label class="custom-control-label" for="summer">summer</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="hypebeast" value="hypebeast">
-                    <label class="custom-control-label" for="hypebeast" name="tags[]">hypebeast</label>
+                    <input type="checkbox" class="custom-control-input" id="hypebeast" name="tags[]" value="hypebeast">
+                    <label class="custom-control-label" for="hypebeast">hypebeast</label>
+                </div>
+                <!-- tambah js untuk other biar bisa tambah banyak tags nya -->
+            </div>
+
+            <div class="form-group">
+                <p>Status</p>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="trending" name="status" class="custom-control-input" value="trending">
+                    <label class="custom-control-label" for="trending">Trending</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="new" name="status" class="custom-control-input" value="new">
+                    <label class="custom-control-label" for="new">New</label>
                 </div>
             </div>
+
+            <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
         </form>
     </div>
 </body>

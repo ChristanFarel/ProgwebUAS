@@ -21,12 +21,30 @@ $nomer = 1;
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand" href="form.php">Insert</a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="backup_item/b.png" width="30" height="30" alt="">
+            Admin
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="form.php">Insert</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
     </nav>
 
 
@@ -54,12 +72,12 @@ $nomer = 1;
                     <td><?= $row['nama']; ?></td>
                     <td><?= $row['harga']; ?></td>
                     <td><?= $row['ukuran']; ?></td>
-                    <td><?= $row['kondisi']; ?></td>
+                    <td><?= ($row['kondisi'] == 1) ? "baru" : "bekas"; ?></td>
                     <td><?= $row['berat']; ?></td>
                     <td><?= $row['kategori']; ?></td>
                     <td><?= $row['jenis']; ?></td>
                     <td><?= $row['tag']; ?></td>
-                    <td>Action </td>
+                    <td>Action</td>
                 </tr>
                 <?php $nomer++; ?>
             <?php endwhile; ?>
