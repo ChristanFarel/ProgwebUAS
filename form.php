@@ -60,30 +60,27 @@ require "function.php";
             <div class="form-group">
                 <p>Pilih Ukuran</p>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-S">
-                    <label class="custom-control-label" for="ukuran-S" name="ukuran[]<div class=" form-group">
-                        <p>Pilih Ukuran</p>
-                        ">S
-                    </label>
+                    <input type="checkbox" class="custom-control-input" id="ukuran-S" value="S">
+                    <label class="custom-control-label" for="ukuran-S" name="ukuran[]">S</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-M">
+                    <input type="checkbox" class="custom-control-input" id="ukuran-M" value="M">
                     <label class="custom-control-label" for="ukuran-M" name="ukuran[]">M</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-L">
+                    <input type="checkbox" class="custom-control-input" id="ukuran-L" value="L">
                     <label class="custom-control-label" for="ukuran-L" name="ukuran[]">L</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-XL">
+                    <input type="checkbox" class="custom-control-input" id="ukuran-XL" value="XL">
                     <label class="custom-control-label" for="ukuran-XL" name="ukuran[]">XL</label>
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-XXL">
+                    <input type="checkbox" class="custom-control-input" id="ukuran-XXL" value="XXL">
                     <label class="custom-control-label" for="ukuran-XXL" name="ukuran[]">XXL</label>
                 </div>
             </div>
@@ -131,8 +128,27 @@ require "function.php";
                 <textarea class="form-control" id="input-keterangan" rows="3" name="keterangan"></textarea>
             </div>
 
-            <!-- <div class="form-group">
-            </div> -->
+            <div class="form-group">
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="hoodie" value="hoodie">
+                    <label class="custom-control-label" for="hoodie" name="tags[]">hoodie</label>
+                </div>
+
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="cold" value="cold">
+                    <label class="custom-control-label" for="cold" name="tags[]">cold</label>
+                </div>
+
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="summer" value="summer">
+                    <label class="custom-control-label" for="summer" name="tags[]">summer</label>
+                </div>
+
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="hypebeast" value="hypebeast">
+                    <label class="custom-control-label" for="hypebeast" name="tags[]">hypebeast</label>
+                </div>
+            </div>
         </form>
     </div>
 </body>

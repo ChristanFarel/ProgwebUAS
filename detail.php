@@ -1,3 +1,8 @@
+<?php
+require "function.php";
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,26 +23,36 @@
                 <span class="dalamBaju">.com</span>
             </a>
 
-            <div class="login">
-                <button class="tombolLogin">Log in</button>
-            </div>
+            <?php if (!isset($_SESSION['login'])) : ?>
+                <div class="login">
+                    <button class="tombolLogin"><a href="login.php">Log in</a></button>
+                </div>
+            <?php else : ?>
+                <div class="login">
+                    <button class="tombolLogin"><a href="logout.php">Log Out</a></button>
+                </div>
+
+                <div class="login">
+                    <button class="tombolLogin"><a href="admin.php">Admin</a></button>
+                </div>
+            <?php endif; ?>
         </div>
         <!-- nav -->
         <div class="nav">
-
-            <a href="index.php">Home</a>
+            <a class="active" href="index.php">Home</a>
             <a href="#news">Kid</a>
-            <a class="active" href="#contact">Adult</a>
+            <a href="detail.html">Adult</a>
             <a href="#about">Men</a>
             <a href="#about">Women</a>
             <a href="#about">Discount</a>
             <a href="#about">About Us</a>
             <div class="searchBar">
-                <form action="#">
+                <form action="cari.php" method="GET">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><span class="tbl">Cari</span></button>
                 </form>
             </div>
+
         </div>
 
         <div class="dami">

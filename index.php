@@ -42,7 +42,7 @@ session_start();
         <div class="nav">
             <a class="active" href="index.php">Home</a>
             <a href="#news">Kid</a>
-            <a href="detail.html">Adult</a>
+            <a href="detail.php">Adult</a>
             <a href="#about">Men</a>
             <a href="#about">Women</a>
             <a href="#about">Discount</a>
@@ -111,7 +111,7 @@ session_start();
 
         <div class="bajuTrending">
             <div>
-                <a href="detail.html"><img class="b1" src="baju1.png" alt=""></a>
+                <a href="detail.php"><img class="b1" src="baju1.png" alt=""></a>
 
                 <br>
                 <div>
@@ -123,7 +123,7 @@ session_start();
                 </div>
             </div>
             <div>
-                <a href="detail.html"><img class="b1" src="baju2.png" alt=""></a>
+                <a href="detail.php"><img class="b1" src="baju2.png" alt=""></a>
 
                 <br>
                 <div>
@@ -147,7 +147,7 @@ session_start();
 
         <div class="tsp">
             <div class="cuacua">
-                <a href="detail.html"><img src="itaci.jpg" alt=""></a>
+                <a href="detail.php"><img src="itaci.jpg" alt=""></a>
                 T-Shirt Mengekyo Sharingan
                 <p>Rp 70.000,-</p>
                 <div class="over">
@@ -155,7 +155,7 @@ session_start();
                 </div>
             </div>
             <div class="cuacua">
-                <a href="detail.html"><img src="bajuBiru.jfif" alt=""></a>
+                <a href="detail.php"><img src="bajuBiru.jfif" alt=""></a>
                 T-shirt Polos
                 <p>Rp 50.000,-</p>
                 <div class="over">
@@ -163,7 +163,7 @@ session_start();
                 </div>
             </div>
             <div class="cuacua">
-                <a href="detail.html"><img src="jubahSasageyo.jpg" alt=""></a>
+                <a href="detail.php"><img src="jubahSasageyo.jpg" alt=""></a>
                 Jubah Sasageyo
                 <p>Rp 135.000,-</p>
                 <div class="over">
@@ -171,7 +171,7 @@ session_start();
                 </div>
             </div>
             <div class="cuacua">
-                <a href="detail.html"><img src="t-shirt1.jpg" alt=""></a>
+                <a href="detail.php"><img src="t-shirt1.jpg" alt=""></a>
                 Kemeja Santai di Pantai
                 <p>Rp 95.000,-</p>
                 <div class="over">
