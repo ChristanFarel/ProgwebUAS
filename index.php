@@ -12,7 +12,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baju Bagus</title>
-    <link rel="shortcut icon" href="b.ico" />
+    <!-- <link rel="shortcut icon" href="b.ico" /> -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,7 +20,7 @@ session_start();
     <div class="container">
         <!-- header -->
         <div class="atas">
-            <a class="BajuBagus" href="71190422.html">BajuBagus
+            <a class="BajuBagus" href="index.php">BajuBagus
                 <span class="dalamBaju">.com</span>
             </a>
 
@@ -40,7 +40,7 @@ session_start();
         </div>
         <!-- nav -->
         <div class="nav">
-            <a class="active" href="71190422.html">Home</a>
+            <a class="active" href="index.php">Home</a>
             <a href="#news">Kid</a>
             <a href="detail.html">Adult</a>
             <a href="#about">Men</a>
@@ -58,7 +58,7 @@ session_start();
 
         <div class="vid">
             <video class="gambarBesar" autoplay muted loop>
-                <source src="iklan.mp4" type="video/mp4">
+                <source src="image/iklan.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -183,7 +183,7 @@ session_start();
         <!--Bahan  -->
         <div class="bahan">
             <div>
-                <img src="artistry.png" alt="">
+                <img src="image/other/artistry.png" alt="">
             </div>
             <div class="tlsa">
                 <p>asd</p>
@@ -204,7 +204,7 @@ session_start();
 
         <div class="kain">
             <div>
-                <img class="gbrkain" src="Kain.png" alt="">
+                <img class="gbrkain" src="image/other/Kain.png" alt="">
             </div>
             <div class="tls">
                 <p>asd</p>
@@ -232,9 +232,9 @@ session_start();
                 </div>
                 <div class="fs">
                     <h3>Find Us</h3>
-                    <li> <img src="instagram.png" alt="">@BajuBagus</li>
-                    <li> <img src="facebook.png" alt=""> Baju Bagus Official</li>
-                    <li> <img src="twitter.png" alt="">@BajuBagus</li>
+                    <li> <img src="icon/instagram.png" alt="">@BajuBagus</li>
+                    <li> <img src="icon/facebook.png" alt=""> Baju Bagus Official</li>
+                    <li> <img src="icon/twitter.png" alt="">@BajuBagus</li>
                 </div>
                 <div class="store">
                     <h3>Our Store</h3>
