@@ -72,8 +72,11 @@ background-color: #232F3E;
 input{
     font-family: tokped;
     border: none;
-    border-bottom: 1px solid black;
     
+}
+
+.ipt{
+    border-bottom: 1px solid black;
 }
 
 

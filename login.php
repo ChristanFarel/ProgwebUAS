@@ -45,9 +45,9 @@ if (isset($_POST['submit'])) {
 
                 <form action="#" method="POST">
                     <label for="username">Username</label> <br>
-                    <input type="text" name="username" required> <br> <br>
+                    <input class="ipt" type="text" name="username" required> <br> <br>
                     <label for="pass">Password</label> <br>
-                    <input type="password" name="pass" required> <br> <br>
+                    <input class="ipt" type="password" name="pass" required> <br> <br>
                     <input type="submit" value="Login" name="submit">
                 </form>
             </div>
