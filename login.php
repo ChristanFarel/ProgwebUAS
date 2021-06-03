@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['login'] = $user;
         header('Location: index.php');
     } else {
-        echo "alert('Username atau password salah!')";
+        echo "<scrip>alert('Username atau password salah!')</script>";
     }
 }
 ?>
@@ -29,14 +29,33 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styleLogin.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-    <form action="#" method="POST">
-        Username: <input type="text" name="username" required> <br>
-        Password: <input type="password" name="pass" required> <br>
-        <input type="submit" value="submit" name="submit">
-    </form>
+    <div class="containerku">
+        <div class="kotakinput">
+            <div class="samping">
+                <img src="image/background/samping.jpg" alt="">
+            </div>
+            <div class="formlog">
+                <h2>Log Into BajuBagus</h2>
+                <p>Enter your details below</p>
+
+                <form action="#" method="POST">
+                    <label for="username">Username</label> <br>
+                    <input type="text" name="username" required> <br> <br>
+                    <label for="pass">Password</label> <br>
+                    <input type="password" name="pass" required> <br> <br>
+                    <input type="submit" value="Login" name="submit">
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
 
 </body>
 
