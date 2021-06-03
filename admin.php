@@ -1,6 +1,10 @@
 <?php
 require "function.php";
 
+if (!isset($_SESSION["login"])) {
+    header("Location: index.php");
+}
+
 $querySelect = "SELECT * from barang;";
 
 $hasil = mysqli_query($conn, $querySelect);

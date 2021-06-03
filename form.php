@@ -2,9 +2,11 @@
 require "function.php";
 session_start();
 
-if ($_SESSION["login"])
+if (!isset($_SESSION["login"])) {
+    header("Location: index.php");
+}
 
-    $tmp = array("nama" => "", "harga" => "", "kondisi" => "", "berat" => "", "keterangan" => "", "status" => "");
+$tmp = array("nama" => "", "harga" => "", "kondisi" => "", "berat" => "", "keterangan" => "", "status" => "");
 
 if (isset($_POST["submit"])) {
     $nama = $_POST["nama"];

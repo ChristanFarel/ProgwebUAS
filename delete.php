@@ -4,6 +4,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require "function.php";
 
+if (!isset($_SESSION["login"])) {
+    header("Location: index.php");
+}
+
 if (isset($_GET["id"])) {
     $id = mysqli_escape_string($conn, $_GET["id"]);
     $queryDelete = "DELETE FROM barang WHERE id = $id ;";
