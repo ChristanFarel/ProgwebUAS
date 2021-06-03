@@ -71,8 +71,9 @@ background-color: #232F3E;
 
 input{
     font-family: tokped;
-    border-radius: 5px;
     border: none;
+    border-bottom: 1px solid black;
+    
 }
 
 
