@@ -21,19 +21,31 @@ if (isset($_POST["submit"])) {
     $tags = implode(", ", $_POST["tags"]);
     $status = $_POST["status"];
 
+
     $ext = "." . pathinfo($file_gambar["name"], PATHINFO_EXTENSION);
     $path = "image/" . $status . "/" . time() . $ext;
 
-    $queryInsert = "INSERT INTO barang VALUES(DEFAULT, '$nama', '$path', 
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $queryInsert = "UPDATE barang set nama = '$nama', gambar = '$path', harga = '$harga' , ukuran = '$ukuran', kondisi = '$kondisi', berat = '$berat', kategori = '$kategori', jenis = '$jenis', keterangan = '$keterangan', tag = '$tags' WHERE id = $id;";
+    } else {
+        $queryInsert = "INSERT INTO barang VALUES(DEFAULT, '$nama', '$path', 
     '$harga', '$ukuran', $kondisi, '$berat', '$kategori', '$jenis', 
     '$keterangan', '$tags');";
+    }
+
 
     if (mysqli_query($conn, $queryInsert)) {
         move_uploaded_file($file_gambar["tmp_name"], $path);
     }
 } else {
     if (isset($_GET["id"])) {
-        $id = $_GET["id"];
+        // $queryUpdate = 'UPDATE barang SET nama = "$_POST['nama']" ';
+
+        // $queryUpdate = "UPDATE barang set nama = '$nama', gambar = '$file_gambar', harga = '$harga' , ukuran = '$ukuran', kondisi = '$kondisi', berat = '$berat', kategori = $kategori, jenis = $jenis, keterangan = $keterangan, tag = $tags WHERE id = $id;";
+
+        $id = $_GET['id'];
+
         $querySelect = "SELECT * FROM barang WHERE id = $id LIMIT 1;";
 
         $hasil = mysqli_query($conn, $querySelect);
