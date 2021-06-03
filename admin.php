@@ -77,7 +77,15 @@ $nomer = 1;
                     <td><?= $row['kategori']; ?></td>
                     <td><?= $row['jenis']; ?></td>
                     <td><?= $row['tag']; ?></td>
-                    <td>Action</td>
+                    <td>
+                        <form action="delete.php" method="GET">
+                            <button type="submit" class="btn btn-danger" name="id" value=<?= $row["id"] ?>>Delete</button>
+                        </form>
+                        <br>
+                        <form action="form.php" method="GET">
+                            <button type="submit" class="btn btn-primary" name="id" value=<?= $row["id"] ?>>Update</button>
+                        </form>
+                    </td>
                 </tr>
                 <?php $nomer++; ?>
             <?php endwhile; ?>

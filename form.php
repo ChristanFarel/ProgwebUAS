@@ -1,15 +1,17 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 require "function.php";
+session_start();
+
+if ($_SESSION["login"])
+
+    $tmp = array("nama" => "", "harga" => "", "kondisi" => "", "berat" => "", "keterangan" => "", "status" => "");
 
 if (isset($_POST["submit"])) {
     $nama = $_POST["nama"];
     $file_gambar = $_FILES["gambar"];
     $harga = $_POST["harga"];
     $ukuran = implode(", ", $_POST["ukuran"]);
-    $kondisi = $_POST["kondisi"] == "baru";
+    $kondisi = ($_POST["kondisi"] == "baru") ? 1 : 0;
     $berat = $_POST["berat"];
     $kategori = $_POST["kategori"];
     $jenis = $_POST["jenis"];
@@ -17,15 +19,31 @@ if (isset($_POST["submit"])) {
     $tags = implode(", ", $_POST["tags"]);
     $status = $_POST["status"];
 
-    $path = "image/" . $status . "/" . time() . ".jpg";
+    $ext = "." . pathinfo($file_gambar["name"], PATHINFO_EXTENSION);
+    $path = "image/" . $status . "/" . time() . $ext;
 
     $queryInsert = "INSERT INTO barang VALUES(DEFAULT, '$nama', '$path', 
-    '$harga', '$ukuran', '$kondisi', '$berat', '$kategori', '$jenis', 
+    '$harga', '$ukuran', $kondisi, '$berat', '$kategori', '$jenis', 
     '$keterangan', '$tags');";
 
     if (mysqli_query($conn, $queryInsert)) {
         move_uploaded_file($file_gambar["tmp_name"], $path);
-        echo "berhasil";
+    }
+} else {
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
+        $querySelect = "SELECT * FROM barang WHERE id = $id LIMIT 1;";
+
+        $hasil = mysqli_query($conn, $querySelect);
+        if ($hasil) {
+            $row = mysqli_fetch_assoc($hasil);
+            $tmp["nama"] = $row["nama"];
+            $tmp["harga"] = $row["harga"];
+            $tmp["kondisi"] = $row["kondisi"];
+            $tmp["berat"] = $row["berat"];
+            $tmp["keterangan"] = $row["keterangan"];
+            $tmp["status"] = explode("/", $row["gambar"])[1];
+        }
     }
 }
 ?>
@@ -73,7 +91,7 @@ if (isset($_POST["submit"])) {
         <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="input-nama">Nama Barang</label>
-                <input class="form-control" type="text" placeholder="Masukan nama barang" id="input-nama" name="nama">
+                <input class="form-control" type="text" placeholder="Masukan nama barang" id="input-nama" name="nama" value=<?= $tmp["nama"] ?>>
             </div>
 
             <div class="form-group">
@@ -86,7 +104,7 @@ if (isset($_POST["submit"])) {
 
             <div class="form-group">
                 <label for="input-harga">Harga Barang</label>
-                <input class="form-control" type="number" placeholder="Masukan harga barang" id="input-harga" name="harga">
+                <input class="form-control" type="number" placeholder="Masukan harga barang" id="input-harga" name="harga" value=<?= $tmp["harga"] ?>>
             </div>
 
             <div class="form-group">
@@ -120,18 +138,18 @@ if (isset($_POST["submit"])) {
             <div class="form-group">
                 <p>Kondisi Barang</p>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="input-baru" name="kondisi" class="custom-control-input" value="baru">
+                    <input type="radio" id="input-baru" name="kondisi" class="custom-control-input" value="baru" <?= ($tmp["kondisi"] == 1) ? "checked" : "" ?>>
                     <label class="custom-control-label" for="input-baru">Baru</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="input-bekas" name="kondisi" class="custom-control-input" value="bekas">
+                    <input type="radio" id="input-bekas" name="kondisi" class="custom-control-input" value="bekas" <?= ($tmp["kondisi"] == 0) ? "checked" : "" ?>>
                     <label class="custom-control-label" for="input-bekas">Bekas</label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="input-berat">Berat Barang</label>
-                <input class="form-control" type="number" placeholder="Masukan berat barang dalam satuan gram" id="input-berat" name="berat" step="0.01">
+                <input class="form-control" type="number" placeholder="Masukan berat barang dalam satuan gram" id="input-berat" name="berat" step="0.01" value=<?= $tmp["berat"] ?>>
             </div>
 
             <div class="form-group">
@@ -157,7 +175,7 @@ if (isset($_POST["submit"])) {
 
             <div class="form-group">
                 <label for="input-keterangan">Keterangan</label>
-                <textarea class="form-control" id="input-keterangan" rows="3" name="keterangan"></textarea>
+                <textarea class="form-control" id="input-keterangan" rows="3" name="keterangan"><?= $tmp["keterangan"] ?></textarea>
             </div>
 
             <div class="form-group">
@@ -187,11 +205,11 @@ if (isset($_POST["submit"])) {
             <div class="form-group">
                 <p>Status</p>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="trending" name="status" class="custom-control-input" value="trending">
+                    <input type="radio" id="trending" name="status" class="custom-control-input" value="trending" <?= ($tmp["status"] == "trending") ? "checked" : "" ?>>
                     <label class="custom-control-label" for="trending">Trending</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="new" name="status" class="custom-control-input" value="new">
+                    <input type="radio" id="new" name="status" class="custom-control-input" value="new" <?= ($tmp["status"] == "new") ? "checked" : "" ?>>
                     <label class="custom-control-label" for="new">New</label>
                 </div>
             </div>

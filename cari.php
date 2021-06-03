@@ -1,12 +1,15 @@
 <?php
 session_start();
 require "function.php";
+if (!isset($_GET['search'])) {
+    echo "<script>alert('Silahkan isi kolom search')</script>";
+    header("Location: index.php");
+}
 $keyword = $_GET['search'];
 
 $querySelect = "SELECT nama,gambar,harga FROM barang where nama like '%$keyword%' or kategori like '%$keyword%' or tag like '%$keyword%' ;";
 $hasil = mysqli_query($conn, $querySelect);
 $nomer = 1;
-echo $querySelect;
 ?>
 
 <!DOCTYPE html>
