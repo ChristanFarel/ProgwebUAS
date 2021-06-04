@@ -1,6 +1,15 @@
 <?php
 require "function.php";
 session_start();
+
+if (!isset($_GET["id"])) {
+    echo '<script>alert("ID barang tidak ditemukan");
+    window.location.href="index.php";</script>';
+}
+$id = $_GET["id"];
+$querySelect = "SELECT * FROM barang WHERE id = $id LIMIT 1;";
+$hasil = mysqli_query($conn, $querySelect);
+$row = mysqli_fetch_assoc($hasil);
 ?>
 
 <!DOCTYPE html>
@@ -62,39 +71,52 @@ session_start();
         <div class="kotakBesar">
             <div class="gambarDetail">
                 <div>
-                    <img src="image/trending/baju1.png" alt="">
+                    <img src=<?= $row["gambar"] ?> alt=<?= $row["nama"] ?>>
                 </div>
 
                 <div class="hgr">
-                    <span> <b>Rp. 150.000</b> </span>
+                    <span> <b><?= format_num($row["harga"]) ?></b> </span>
                 </div>
 
                 <label for="ukuran">Choose Your Size:</label>
                 <br>
+                <?php
+                $sizes = explode(", ", $row["ukuran"]);
+                ?>
+
                 <select name="ukuran" id="ukuran">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
+                    <?php foreach ($sizes as $size) : ?>
+                        <option value=<?= $size ?>><?= $size ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
             <div class="penjelasan">
                 <div>
                     <h2>Jaket Musim Dingin</h2>
-                    <h6>14,248 Rating | 238 answered ratings</h6>
+                    <!-- <h6>14,248 Rating | 238 answered ratings</h6> -->
                     <h6>tags: <a href="#">Hoodie</a> , <a href="#">Men</a> , <a href="#">Cold</a> </h6>
+                    <?php $tags = explode(", ", $row["tag"]) ?>
+                    <h6>
+                        tags:
+                        <?php foreach ($tags as $tag) : ?>
+                            <a href="#"><?= $tag ?></a>
+                        <?php endforeach; ?>
+                    </h6>
                     <hr>
                 </div>
 
-                <p>Condition: <span>Baru</span></p>
-                <p>Weight: <span>750gr</span></p>
-                <p>Category: <span>Hoodie Pria</span></p>
+                <p>Condition: <span><?= ($row["kondisi"] == 1) ? "baru" : "bekas" ?></span></p>
+                <p>Weight: <span><?= $row["berat"] ?>gr</span></p>
+                <p>Category: <span><?= $row["jenis"] . " " . $row["kategoris"] ?></span></p>
                 <br>
                 <input type="checkbox" class="read-more-state" id="post-2" />
                 <ul class="read-more-wrap">
                     <span>Details:</span>
-                    <li>95% Rayon, 5% Spandex</li>
+                    <p>
+                        <?= $row["keterangan"] ?>
+                    </p>
+                    <!-- <li>95% Rayon, 5% Spandex</li>
                     <li>Hand Wash Only</li>
                     <li class="read-more-target">US Regular Size: XS(US 0-2),S(US 4-6),M(US 8-10),L(US 12-14),XL(US
                         16-18),2XL(US
@@ -110,7 +132,7 @@ session_start();
                         great.
                     </li>
                     <li class="read-more-target">Note:Hand Wash Seperately in Cold Water. Package Content: 1 x Women
-                        Dress.</li>
+                        Dress.</li> -->
                 </ul>
                 <label for="post-2" class="read-more-trigger"></label>
             </div>
@@ -118,7 +140,7 @@ session_start();
             <div class="cart">
 
                 <button>
-                    <div><img src="cart.png" alt=""></div>
+                    <div><img src="icon/cart.png" alt=""></div>
                     <div class="keran">
                         <span>Buy Now!</span>
                     </div>
@@ -128,7 +150,7 @@ session_start();
                 <span><img src="icon/facebook.png" alt=""> <img src="icon/instagram.png" alt="">
                     <img src="icon/twitter.png" alt=""></span>
                 <P>Other Picture:</P>
-                <img class="dw" src="hoodie.jfif" alt="">
+                <img class="dw" src=<?= $row["gambar"] ?> alt="">
 
             </div>
         </div>
