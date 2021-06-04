@@ -1,11 +1,14 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require "function.php";
 session_start();
 
 $querySelectNew = "SELECT * FROM barang WHERE gambar LIKE '%new%';";
 $querySelectTren = "SELECT * FROM barang WHERE gambar LIKE '%trending%';";
 $hasilNew = mysqli_query($conn, $querySelectNew);
-$hasilTrending =
+$hasilTrending = mysqli_query($conn, $querySelectTren);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +18,11 @@ $hasilTrending =
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baju Bagus</title>
-    <!-- <link rel="shortcut icon" href="b.ico" /> -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <?= $querySelectTren ?>
     <div class="container">
         <!-- header -->
         <div class="atas">
@@ -113,19 +116,21 @@ $hasilTrending =
         </div>
 
         <div class="bajuTrending">
-            <div>
-                <a href="detail.php"><img class="b1" src="baju1.png" alt=""></a>
-
-                <br>
+            <?php while ($row = mysqli_fetch_assoc($hasilTrending)) : ?>
                 <div>
-                    <p>Jaket Musim Dingin</p>
-                    <p>Rp 150.000,-</p>
-                    <div class="overlay">
-                        <div class="text"> <a href="">Detail</a> </div>
+                    <a href=<?= "detail.php?id=" . $row["id"] ?>><img class="b1" src=<?= $row["gambar"] ?> alt=<?= $row["nama"] ?>></a>
+
+                    <br>
+                    <div>
+                        <p><?= $row["nama"] ?></p>
+                        <p><?= format_num($row["harga"]) ?></p>
+                        <div class="overlay">
+                            <div class="text"> <a href=<?= "detail.php?id=" . $row["id"] ?>>Detail</a> </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
+            <?php endwhile; ?>
+            <!-- <div>
                 <a href="detail.php"><img class="b1" src="baju2.png" alt=""></a>
 
                 <br>
@@ -136,7 +141,7 @@ $hasilTrending =
                         <div class="text"> <a href="">Detail</a> </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
@@ -153,7 +158,7 @@ $hasilTrending =
                 <div class="cuacua">
                     <a href=<?= "detail.php?id=" . $row["id"] ?>><img src=<?= $row["gambar"] ?> alt=<?= $row["nama"] ?>></a>
                     <?= $row["nama"] ?>
-                    <p>Rp <?= number_format($row["harga"], 0, ",", ".") ?>,-</p>
+                    <p><?= format_num($row["harga"]) ?></p>
                     <div class="over">
                         <div class="teks"> <a href=<?= "detail.php?id=" . $row["id"] ?>>Detail</a> </div>
                     </div>
