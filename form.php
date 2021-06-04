@@ -40,9 +40,6 @@ if (isset($_POST["submit"])) {
     }
 } else {
     if (isset($_GET["id"])) {
-        // $queryUpdate = 'UPDATE barang SET nama = "$_POST['nama']" ';
-
-        // $queryUpdate = "UPDATE barang set nama = '$nama', gambar = '$file_gambar', harga = '$harga' , ukuran = '$ukuran', kondisi = '$kondisi', berat = '$berat', kategori = $kategori, jenis = $jenis, keterangan = $keterangan, tag = $tags WHERE id = $id;";
 
         $id = $_GET['id'];
 

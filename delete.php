@@ -12,16 +12,18 @@ if (!isset($_SESSION["login"])) {
     if (isset($_GET["id"])) {
         $id = mysqli_escape_string($conn, $_GET["id"]);
         $queryDelete = "DELETE FROM barang WHERE id = $id ;";
-        $hasil = mysqli_query($conn, $queryDelete);
+        $queryPath = "SELECT gambar FROM barang WHERE id = $id LIMIT 1;";
+        $hasil = mysqli_query($conn, $queryPath);
+        mysqli_query($conn, $queryDelete);
 
         if (mysqli_affected_rows($conn) > 0) {
+            $path = mysqli_fetch_assoc($hasil)["gambar"];
+            unlink($path);
             echo '<script>alert("Berhasil dihapus");
         window.location.href="admin.php";</script>';
-            // header("Location: admin.php");
         } else {
             echo '<script>alert("Gagal dihapus");
         window.location.href="admin.php";</script>';
-            // header("Location: admin.php");
         }
     } else {
         echo '<script>alert("id tidak ditemukan!");
