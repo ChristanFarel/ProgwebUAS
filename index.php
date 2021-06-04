@@ -5,7 +5,7 @@ session_start();
 $querySelectNew = "SELECT * FROM barang WHERE gambar LIKE '%new%';";
 $querySelectTren = "SELECT * FROM barang WHERE gambar LIKE '%trending%';";
 $hasilNew = mysqli_query($conn, $querySelectNew);
-
+$hasilTrending =
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,36 +153,12 @@ $hasilNew = mysqli_query($conn, $querySelectNew);
                 <div class="cuacua">
                     <a href=<?= "detail.php?id=" . $row["id"] ?>><img src=<?= $row["gambar"] ?> alt=<?= $row["nama"] ?>></a>
                     <?= $row["nama"] ?>
-                    <p><?= $row["harga"] ?></p>
+                    <p>Rp <?= number_format($row["harga"], 0, ",", ".") ?>,-</p>
                     <div class="over">
                         <div class="teks"> <a href=<?= "detail.php?id=" . $row["id"] ?>>Detail</a> </div>
                     </div>
                 </div>
             <?php endwhile; ?>
-            <!-- <div class="cuacua">
-                <a href="detail.php"><img src="bajuBiru.jfif" alt=""></a>
-                T-shirt Polos
-                <p>Rp 50.000,-</p>
-                <div class="over">
-                    <div class="teks"> <a href="">Detail</a> </div>
-                </div>
-            </div>
-            <div class="cuacua">
-                <a href="detail.php"><img src="jubahSasageyo.jpg" alt=""></a>
-                Jubah Sasageyo
-                <p>Rp 135.000,-</p>
-                <div class="over">
-                    <div class="teks"> <a href="">Detail</a> </div>
-                </div>
-            </div>
-            <div class="cuacua">
-                <a href="detail.php"><img src="t-shirt1.jpg" alt=""></a>
-                Kemeja Santai di Pantai
-                <p>Rp 95.000,-</p>
-                <div class="over">
-                    <div class="teks"> <a href="">Detail</a> </div>
-                </div>
-            </div> -->
         </div>
 
         <!--Bahan  -->
