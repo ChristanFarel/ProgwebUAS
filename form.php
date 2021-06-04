@@ -123,10 +123,10 @@ if (isset($_POST["submit"])) {
                 <input class="form-control" type="number" placeholder="Masukan harga barang" min="0" id="input-harga" name="harga" required value=<?= $tmp["harga"] ?>>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" required>
                 <p>Pilih Ukuran</p>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="ukuran-S" name="ukuran[]" value="S" required>
+                    <input type="checkbox" class="custom-control-input" id="ukuran-S" name="ukuran[]" value="S">
                     <label class="custom-control-label" for="ukuran-S">S</label>
                 </div>
 
@@ -194,10 +194,10 @@ if (isset($_POST["submit"])) {
                 <textarea class="form-control" id="input-keterangan" rows="3" name="keterangan" required><?= $tmp["keterangan"] ?></textarea>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" required>
                 <p>Tags</p>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="hoodie" name="tags[]" value="hoodie" required>
+                    <input type="checkbox" class="custom-control-input" id="hoodie" name="tags[]" value="hoodie">
                     <label class="custom-control-label" for="hoodie">hoodie</label>
                 </div>
 
