@@ -93,7 +93,7 @@ $row = mysqli_fetch_assoc($hasil);
 
             <div class="penjelasan">
                 <div>
-                    <h2>Jaket Musim Dingin</h2>
+                    <h2><?= $row["nama"] ?></h2>
                     <!-- <h6>14,248 Rating | 238 answered ratings</h6> -->
                     <h6>tags: <a href="#">Hoodie</a> , <a href="#">Men</a> , <a href="#">Cold</a> </h6>
                     <?php $tags = explode(", ", $row["tag"]) ?>
