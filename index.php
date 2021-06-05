@@ -130,19 +130,6 @@ $hasilTrending = mysqli_query($conn, $querySelectTren);
                     </div>
                 </div>
             <?php endwhile; ?>
-            <!-- <div>
-                <a href="detail.php"><img class="b1" src="baju2.png" alt=""></a>
-
-                <br>
-                <div>
-                    <p>Celana Chinos</p>
-                    <p>Rp 125.000,-</p>
-                    <div class="overlay">
-                        <div class="text"> <a href="">Detail</a> </div>
-                    </div>
-                </div>
-            </div> -->
-
         </div>
 
         <!-- Special Product -->

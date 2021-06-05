@@ -31,7 +31,7 @@ $nomer = 1;
     <div class="container">
         <!-- header -->
         <div class="atas">
-            <a class="BajuBagus" href="71190422.html">BajuBagus
+            <a class="BajuBagus" href="index.php">BajuBagus
                 <span class="dalamBaju">.com</span>
             </a>
 
@@ -52,7 +52,7 @@ $nomer = 1;
 
         <!-- nav -->
         <div class="nav">
-            <a class="active" href="71190422.html">Home</a>
+            <a class="active" href="index.php">Home</a>
             <a href="#news">Kid</a>
             <a href="detail.html">Adult</a>
             <a href="#about">Men</a>
