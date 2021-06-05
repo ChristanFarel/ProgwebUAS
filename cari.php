@@ -7,7 +7,7 @@ if (!isset($_GET['search'])) {
 }
 $keyword = $_GET['search'];
 
-$querySelect = "SELECT nama,gambar,harga FROM barang where nama like '%$keyword%' or kategori like '%$keyword%' or tag like '%$keyword%' ;";
+$querySelect = "SELECT id, nama,gambar,harga FROM barang where nama like '%$keyword%' or kategori like '%$keyword%' or tag like '%$keyword%' ;";
 $hasil = mysqli_query($conn, $querySelect);
 $nomer = 1;
 ?>
@@ -21,7 +21,9 @@ $nomer = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="styleAdmin.css">
+    <!-- <link rel="stylesheet" href="styleAdmin.css"> -->
+    <link rel="stylesheet" href="styleCari.css">
+
 
 </head>
 
@@ -65,6 +67,7 @@ $nomer = 1;
             </div>
 
         </div>
+        <h2>Hasil Pencarian Dari: <?php echo $keyword; ?></h2>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -78,7 +81,7 @@ $nomer = 1;
                 <?php while ($row = mysqli_fetch_assoc($hasil)) : ?>
                     <tr>
                         <td><?= $nomer; ?></td>
-                        <td> <img class="thumbnail" src=<?= $row['gambar']; ?> alt="halo halo"></td>
+                        <td class="td2"> <a href=<?= "detail.php?id=" . $row["id"] ?>><img class="thumbnail" src=<?= $row['gambar']; ?> alt="halo halo"></a></td>
                         <td><?= $row['nama']; ?></td>
                         <td><?= format_num($row['harga']); ?></td>
                     </tr>
