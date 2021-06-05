@@ -20,7 +20,6 @@ $row = mysqli_fetch_assoc($hasil);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baju Bagus</title>
-    <link rel="shortcut icon" href="b.ico" />
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -108,7 +107,7 @@ $row = mysqli_fetch_assoc($hasil);
 
                 <p>Condition: <span><?= ($row["kondisi"] == 1) ? "baru" : "bekas" ?></span></p>
                 <p>Weight: <span><?= $row["berat"] ?>gr</span></p>
-                <p>Category: <span><?= $row["jenis"] . " " . $row["kategoris"] ?></span></p>
+                <p>Category: <span><?= $row["jenis"] . " " . $row["kategori"] ?></span></p>
                 <br>
                 <input type="checkbox" class="read-more-state" id="post-2" />
                 <ul class="read-more-wrap">
@@ -166,9 +165,9 @@ $row = mysqli_fetch_assoc($hasil);
                 </div>
                 <div class="fs">
                     <h3>Find Us</h3>
-                    <li> <img src="instagram.png" alt="">@BajuBagus</li>
-                    <li> <img src="facebook.png" alt=""> Baju Bagus Official</li>
-                    <li> <img src="twitter.png" alt="">@BajuBagus</li>
+                    <li> <img src="icon/instagram.png" alt="">@BajuBagus</li>
+                    <li> <img src="icon/facebook.png" alt=""> Baju Bagus Official</li>
+                    <li> <img src="icon/twitter.png" alt="">@BajuBagus</li>
                 </div>
                 <div class="store">
                     <h3>Our Store</h3>
