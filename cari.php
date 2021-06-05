@@ -80,7 +80,7 @@ $nomer = 1;
                         <td><?= $nomer; ?></td>
                         <td> <img class="thumbnail" src=<?= $row['gambar']; ?> alt="halo halo"></td>
                         <td><?= $row['nama']; ?></td>
-                        <td><?= $row['harga']; ?></td>
+                        <td><?= format_num($row['harga']); ?></td>
                     </tr>
                     <?php $nomer++; ?>
                 <?php endwhile; ?>
