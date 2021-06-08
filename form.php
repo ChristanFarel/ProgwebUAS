@@ -6,7 +6,7 @@ if (!isset($_SESSION["login"])) {
     header("Location: index.php");
 }
 
-$tmp = array("nama" => "", "harga" => "", "kondisi" => "", "berat" => "", "keterangan" => "", "status" => "");
+$tmp = array("nama" => "", "harga" => "", "kondisi" => "", "berat" => "", "keterangan" => "", "status" => "", "jenis" => "", "kategori" => "");
 
 if (isset($_POST["submit"])) {
     $nama = $_POST["nama"];
@@ -58,6 +58,8 @@ if (isset($_POST["submit"])) {
             $tmp["berat"] = $row["berat"];
             $tmp["keterangan"] = $row["keterangan"];
             $tmp["status"] = explode("/", $row["gambar"])[1];
+            $tmp["kategori"] = $row["kategori"];
+            $tmp["jenis"] = $row["jenis"];
         }
     }
 }
@@ -104,7 +106,7 @@ if (isset($_POST["submit"])) {
 
     <div class="container">
         <h1>FORM</h1>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" onsubmit="return validateForm();" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="input-nama">Nama Barang</label>
                 <input class="form-control" type="text" placeholder="Masukan nama barang" id="input-nama" name="nama" required value=<?= $tmp["nama"] ?>>
@@ -171,21 +173,21 @@ if (isset($_POST["submit"])) {
             <div class="form-group">
                 <label for="input-kategori">Kategori Barang</label>
                 <select class="form-control" id="input-kategori" name="kategori" required>
-                    <option value="pria">pria</option>
-                    <option value="wanita">wanita</option>
-                    <option value="anak">anak</option>
-                    <option value="dewasa">dewasa</option>
-                    <option value="discount">discount</option>
+                    <option value="pria" <?= ($tmp["kategori"] == "pria") ? "selected" : "" ?>>pria</option>
+                    <option value="wanita" <?= ($tmp["kategori"] == "wanita") ? "selected" : "" ?>>wanita</option>
+                    <option value="anak" <?= ($tmp["kategori"] == "anak") ? "selected" : "" ?>>anak</option>
+                    <option value="dewasa" <?= ($tmp["kategori"] == "dewasa") ? "selected" : "" ?>>dewasa</option>
+                    <option value="discount" <?= ($tmp["kategori"] == "discount") ? "selected" : "" ?>>discount</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="input-jenis">Jenis Barang</label>
                 <select class="form-control" id="input-jenis" name="jenis" required>
-                    <option value="jaket">jaket</option>
-                    <option value="baju">baju</option>
-                    <option value="celana pendek">celana pendek</option>
-                    <option value="celana panjang">celana panjang</option>
+                    <option value="jaket" <?= ($tmp["jenis"] == "jaket") ? "selected" : "" ?>>jaket</option>
+                    <option value="baju" <?= ($tmp["jenis"] == "baju") ? "selected" : "" ?>>baju</option>
+                    <option value="celana pendek" <?= ($tmp["jenis"] == "celana pendek") ? "selected" : "" ?>>celana pendek</option>
+                    <option value="celana panjang" <?= ($tmp["jenis"] == "celana panjang") ? "selected" : "" ?>>celana panjang</option>
                 </select>
             </div>
 

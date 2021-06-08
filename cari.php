@@ -7,7 +7,7 @@ if (!isset($_GET['search'])) {
 }
 $keyword = $_GET['search'];
 
-$querySelect = "SELECT id, nama,gambar,harga FROM barang where nama like '%$keyword%' or kategori like '%$keyword%' or tag like '%$keyword%' ;";
+$querySelect = "SELECT id, nama,gambar,harga FROM barang where nama like '%$keyword%' or kategori like '%$keyword%' or jenis like '%$keyword%' or tag like '%$keyword%' ;";
 $hasil = mysqli_query($conn, $querySelect);
 $nomer = 1;
 ?>
@@ -20,9 +20,9 @@ $nomer = 1;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <!-- <link rel="stylesheet" href="styleAdmin.css"> -->
-    <link rel="stylesheet" href="styleCari.css">
+    <link rel="stylesheet" href="style/styleCari.css">
 
 
 </head>
@@ -68,6 +68,7 @@ $nomer = 1;
 
         </div>
         <h2>Hasil Pencarian Dari: <?php echo $keyword; ?></h2>
+
         <table class="table table-hover">
             <thead>
                 <tr>

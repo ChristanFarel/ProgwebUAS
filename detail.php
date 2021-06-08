@@ -20,7 +20,7 @@ $row = mysqli_fetch_assoc($hasil);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baju Bagus</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
@@ -94,7 +94,6 @@ $row = mysqli_fetch_assoc($hasil);
                 <div>
                     <h2><?= $row["nama"] ?></h2>
                     <!-- <h6>14,248 Rating | 238 answered ratings</h6> -->
-                    <h6>tags: <a href="#">Hoodie</a> , <a href="#">Men</a> , <a href="#">Cold</a> </h6>
                     <?php $tags = explode(", ", $row["tag"]) ?>
                     <h6>
                         tags:
