@@ -12,7 +12,7 @@ background-color: #232F3E;
 
 @font-face{
     font-family: tokped;
-    src: url("font/fontTokped.woff2");
+    src: url("../font/fontTokped.woff2");
 }
 .kotakinput{
     height: 75%;
