@@ -6,7 +6,8 @@ if (!isset($_SESSION["login"])) {
     header("Location: index.php");
 }
 
-$tmp = array("nama" => "", "harga" => "", "kondisi" => "", "berat" => "", "keterangan" => "", "status" => "", "jenis" => "", "kategori" => "");
+// $tmp = array("nama" => "", "harga" => "", "kondisi" => "", "berat" => "", "keterangan" => "", "status" => "", "jenis" => "", "kategori" => "", "gambar" => "");
+$tmp = array();
 
 if (isset($_POST["submit"])) {
     $nama = $_POST["nama"];
@@ -28,10 +29,12 @@ if (isset($_POST["submit"])) {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $queryInsert = "UPDATE barang set nama = '$nama', gambar = '$path', harga = '$harga' , ukuran = '$ukuran', kondisi = '$kondisi', berat = '$berat', kategori = '$kategori', jenis = '$jenis', keterangan = '$keterangan', tag = '$tags' WHERE id = $id;";
+            unlink($_SESSION["gambar"]);
+            unset($_SESSION["gambar"]);
         } else {
             $queryInsert = "INSERT INTO barang VALUES(DEFAULT, '$nama', '$path', 
-    '$harga', '$ukuran', $kondisi, '$berat', '$kategori', '$jenis', 
-    '$keterangan', '$tags');";
+            '$harga', '$ukuran', $kondisi, '$berat', '$kategori', '$jenis', 
+            '$keterangan', '$tags');";
         }
 
         if (mysqli_query($conn, $queryInsert)) {
@@ -60,6 +63,7 @@ if (isset($_POST["submit"])) {
             $tmp["status"] = explode("/", $row["gambar"])[1];
             $tmp["kategori"] = $row["kategori"];
             $tmp["jenis"] = $row["jenis"];
+            $_SESSION["gambar"] = $row["gambar"];
         }
     }
 }
