@@ -83,13 +83,9 @@ $nomer = 1;
                     <td><?= $row['jenis']; ?></td>
                     <td><?= $row['tag']; ?></td>
                     <td>
-                        <form action="delete.php" method="GET">
-                            <button type="submit" class="btn btn-danger" name="id" value=<?= $row["id"] ?>>Delete</button>
-                        </form>
-                        <br>
-                        <form action="form.php" method="GET">
-                            <button type="submit" class="btn btn-primary" name="id" value=<?= $row["id"] ?>>Update</button>
-                        </form>
+                        <a role="button" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')" name="id" href=<?= "delete.php?id=" . $row["id"] ?>>Delete</a>
+                        <br><br>
+                        <a role="button" class="btn btn-primary" name="id" href=<?= "form.php?id=" . $row["id"] ?>>Update</a>
                     </td>
                 </tr>
                 <?php $nomer++; ?>
