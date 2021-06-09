@@ -6,11 +6,12 @@ if (!isset($_SESSION["login"])) {
     header("Location: index.php");
 }
 
-// $tmp = array("nama" => "", "harga" => "", "kondisi" => "", "berat" => "", "keterangan" => "", "status" => "", "jenis" => "", "kategori" => "", "gambar" => "");
 $tmp = array();
 
 if (isset($_POST["submit"])) {
     $nama = $_POST["nama"];
+    // max 32 char
+    $nama = substr($nama, 0, min(strlen($nama), 32));
     $file_gambar = $_FILES["gambar"];
     $harga = $_POST["harga"];
     $ukuran = implode(", ", $_POST["ukuran"]);
@@ -113,7 +114,7 @@ if (isset($_POST["submit"])) {
         <form method="POST" onsubmit="return validateForm();" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="input-nama">Nama Barang</label>
-                <input class="form-control" type="text" placeholder="Masukan nama barang" id="input-nama" name="nama" required value=<?= $tmp["nama"] ?>>
+                <input class="form-control" type="text" placeholder="Masukan nama barang" id="input-nama" name="nama" required maxlength="32" value=<?= $tmp["nama"] ?>>
             </div>
 
             <div class="form-group">

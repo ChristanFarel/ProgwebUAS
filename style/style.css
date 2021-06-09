@@ -1,5 +1,5 @@
 body{
-    background-image: url(image/background/dot-grid.png);
+    background-image: url(../image/background/dot-grid.png);
     font-family: tokped;
 }
 .container {
@@ -179,7 +179,6 @@ white-space: nowrap;
 
 .bajuTrending div:hover .overlay {
 width: 100%;
-/* left: 0; */
 }
 
 .text a{
@@ -291,6 +290,7 @@ video{
 .bajuTrending div{
     display: inline-block;
 }
+
 .b1 {
     width: 300px;
     height: 400px;
@@ -368,7 +368,6 @@ li img {
 
 .cuacua img{
     margin-top: 10px;
-    box-shadow: 0px 4px 9px 1px rgba(0, 0, 0, 0.2),4px 0px 9px 1px rgba(0, 0, 0, 0.2),0px 0px 9px 1px rgba(0, 0, 0, 0.2);
     width: 250px;
     height: 312px;
 }
@@ -425,7 +424,7 @@ width: 100%;
     
     margin: 50px;
     margin-top: 10px; 
-    overflow: scroll;
+    /* overflow: scroll; */
     
 }
 

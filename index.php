@@ -22,7 +22,6 @@ $hasilTrending = mysqli_query($conn, $querySelectTren);
 </head>
 
 <body>
-    <?= $querySelectTren ?>
     <div class="container">
         <!-- header -->
         <div class="atas">
