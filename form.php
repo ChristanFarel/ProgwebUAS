@@ -200,10 +200,16 @@ if (isset($_POST["submit"])) {
                 <textarea class="form-control" id="input-keterangan" rows="3" name="keterangan" required><?= $tmp["keterangan"] ?></textarea>
             </div>
 
-            <div class="form-group" required>
+            <div class="form-group" id="formTag" required>
                 <p>Tags</p>
-                <div>
-                    <input type="text" id="addTag"> <button onclick="tambahTag()">add</button>
+                <div class="form-row align-items-center">
+                    <div class="col-auto my-1 w-25">
+                        <input type="text" class="form-control" id="addTag">
+                    </div>
+                    <div class="col-auto my-1">
+                        <button class="btn btn-info" type="button" onclick="tambahTag()">add</button>
+                    </div>
+
                 </div>
 
                 <div class="custom-control custom-checkbox custom-control-inline">
