@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['login'] = $user;
         header('Location: index.php');
     } else {
-        echo "<scrip>alert('Username atau password salah!')</script>";
+        $gagal = true;
     }
 }
 ?>
@@ -42,12 +42,13 @@ if (isset($_POST['submit'])) {
                 <h2>Log Into BajuBagus</h2>
                 <p>Enter your details below</p>
 
-                <form action="#" method="POST">
+                <form method="POST">
                     <label for="username">Username</label> <br>
                     <input class="ipt" type="text" name="username" required> <br> <br>
                     <label for="pass">Password</label> <br>
                     <input class="ipt" type="password" name="pass" required> <br> <br>
-                    <input type="submit" value="Login" name="submit">
+                    <h6 style="color: red;" <?= (isset($gagal)) ? "" : "hidden" ?>>Username atau password salah!</h6>
+                    <input class="btn btn-primary" type="submit" value="Login" name="submit">
                 </form>
             </div>
 
