@@ -26,3 +26,8 @@ function validateCheckBox(name) {
 function validateForm() {
     return validateCheckBox("ukuran") && validateCheckBox("tags");
 }
+
+function tambahTag() {
+    var tag = document.getElementById("addTag");
+
+}

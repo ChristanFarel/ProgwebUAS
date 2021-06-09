@@ -161,7 +161,7 @@ if (isset($_POST["submit"])) {
             <div class="form-group">
                 <p>Kondisi Barang</p>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="input-baru" name="kondisi" class="custom-control-input" value="baru" <?= ($tmp["kondisi"] == 1) ? "checked" : "" ?> required>
+                    <input type="radio" id="input-baru" name="kondisi" class="custom-control-input" value="baru" required <?= ($tmp["kondisi"] == 1) ? "checked" : "" ?>>
                     <label class="custom-control-label" for="input-baru">Baru</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
@@ -202,6 +202,10 @@ if (isset($_POST["submit"])) {
 
             <div class="form-group" required>
                 <p>Tags</p>
+                <div>
+                    <input type="text" id="addTag"> <button onclick="tambahTag()">add</button>
+                </div>
+
                 <div class="custom-control custom-checkbox custom-control-inline">
                     <input type="checkbox" class="custom-control-input" id="hoodie" name="tags[]" value="hoodie">
                     <label class="custom-control-label" for="hoodie">hoodie</label>
