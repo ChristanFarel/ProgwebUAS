@@ -182,7 +182,6 @@ if (isset($_POST["submit"])) {
                     <option value="wanita" <?= ($tmp["kategori"] == "wanita") ? "selected" : "" ?>>wanita</option>
                     <option value="anak" <?= ($tmp["kategori"] == "anak") ? "selected" : "" ?>>anak</option>
                     <option value="dewasa" <?= ($tmp["kategori"] == "dewasa") ? "selected" : "" ?>>dewasa</option>
-                    <option value="discount" <?= ($tmp["kategori"] == "discount") ? "selected" : "" ?>>discount</option>
                 </select>
             </div>
 

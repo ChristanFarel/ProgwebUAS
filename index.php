@@ -50,7 +50,6 @@ $hasilTrending = mysqli_query($conn, $querySelectTren);
             <a href="detail.php">Adult</a>
             <a href="#about">Men</a>
             <a href="#about">Women</a>
-            <a href="#about">Discount</a>
             <a href="#about">About Us</a>
             <div class="searchBar">
                 <form action="cari.php" method="GET">

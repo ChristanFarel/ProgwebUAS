@@ -23,6 +23,7 @@ $nomer = 1;
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style/styleAdmin.css">
+    <script src="js.js"></script>
 </head>
 
 <body>
@@ -75,7 +76,7 @@ $nomer = 1;
                     <td><?= $nomer; ?></td>
                     <td> <img class="thumbnail" src=<?= $row['gambar']; ?> alt="halo halo"></td>
                     <td><?= $row['nama']; ?></td>
-                    <td><?= $row['harga']; ?></td>
+                    <td><?= format_num($row['harga']) ?></td>
                     <td><?= $row['ukuran']; ?></td>
                     <td><?= ($row['kondisi'] == 1) ? "baru" : "bekas"; ?></td>
                     <td><?= $row['berat']; ?></td>
