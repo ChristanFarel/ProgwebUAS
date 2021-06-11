@@ -5,15 +5,8 @@ session_start();
 if (!isset($_SESSION["login"])) {
     header("Location: index.php");
 }
-// $tmp["nama"] = $row["nama"];
-// $tmp["harga"] = $row["harga"];
-// $tmp["kondisi"] = $row["kondisi"];
-// $tmp["berat"] = $row["berat"];
-// $tmp["keterangan"] = $row["keterangan"];
-// $tmp["status"] = explode("/", $row["gambar"])[1];
-// $tmp["kategori"] = $row["kategori"];
-// $tmp["jenis"] = $row["jenis"];
-$tmp = array('nama' => '', 'harga' => '', 'kondisi' => '', 'berat' => '', 'keterangan' => '', 'status' => '', 'kategori' => '', 'jenis' => '');
+
+$tmp = array('nama' => '', 'harga' => '', 'kondisi' => -1, 'berat' => '', 'keterangan' => '', 'status' => '', 'kategori' => '', 'jenis' => '');
 
 if (isset($_POST["submit"])) {
     $nama = $_POST["nama"];

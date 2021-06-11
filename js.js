@@ -27,6 +27,8 @@ function validateForm() {
     return validateCheckBox("ukuran") && validateCheckBox("tags");
 }
 
+
+
 function tambahTag() {
     var tag = document.getElementById("addTag").value;
     if (tag.length < 1 || tag.split(", ").length > 1) {
