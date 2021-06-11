@@ -33,7 +33,7 @@ $nomer = 1;
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="admin.php">
             <img src="backup_item/b.png" width="30" height="30" alt="">
             Admin
         </a>
