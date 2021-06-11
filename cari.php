@@ -53,20 +53,19 @@ $nomer = 1;
         <!-- nav -->
         <div class="nav">
             <a class="active" href="index.php">Home</a>
-            <a href="#news">Kid</a>
-            <a href="detail.html">Adult</a>
-            <a href="#about">Men</a>
-            <a href="#about">Women</a>
-            <a href="#about">Discount</a>
-            <a href="#about">About Us</a>
+            <a href="cari.php?search=anak">Kid</a>
+            <a href="cari.php?search=dewasa">Adult</a>
+            <a href="cari.php?search=pria">Men</a>
+            <a href="cari.php?search=wanita">Women</a>
+            <a href="">About Us</a>
             <div class="searchBar">
                 <form action="cari.php" method="GET">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><span class="tbl">Cari</span></button>
                 </form>
             </div>
-
         </div>
+
         <h2>Hasil Pencarian Dari: <?php echo $keyword; ?></h2>
 
         <table class="table table-hover">
