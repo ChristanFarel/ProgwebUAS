@@ -8,6 +8,11 @@ if (!isset($_SESSION["login"])) {
 
 $querySelect = "SELECT * from barang;";
 
+if (isset($_GET["q"])) {
+    $keyword = $_GET["q"];
+    $querySelect = "SELECT * FROM barang where nama like '%$keyword%' or kategori like '%$keyword%' or jenis like '%$keyword%' or tag like '%$keyword%' ;";
+}
+
 $hasil = mysqli_query($conn, $querySelect);
 
 $nomer = 1;
@@ -46,8 +51,8 @@ $nomer = 1;
                     <a class="nav-link" href="form.php">Insert</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method="GET">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
