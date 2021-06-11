@@ -9,7 +9,7 @@ if (!isset($_SESSION["login"])) {
 } else {
     if (isset($_GET["id"])) {
         $id = mysqli_escape_string($conn, $_GET["id"]);
-        $queryDelete = "DELETE FROM barang WHERE id = $id ;";
+        $queryDelete = "DELETE FROM barang WHERE id = $id LIMIT 1;";
         $queryPath = "SELECT gambar FROM barang WHERE id = $id LIMIT 1;";
         $hasil = mysqli_query($conn, $queryPath);
         mysqli_query($conn, $queryDelete);
